@@ -5,7 +5,7 @@ def get_ffme_returns():
     """
     Load the Fama-French Dataset for the returns of the Top and Bottom Deciles by MarketCap
     """
-    me_m = pd.read_csv("data/Portfolios_Formed_on_ME_monthly_EW.csv",
+    me_m = pd.read_csv("https://raw.githubusercontent.com/Redzoro1993/Introduction-to-Portfolio-Construction-and-Analysis-with-Python/master/Data/Portfolios_Formed_on_ME_monthly_EW.csv",
                        header=0, index_col=0, na_values=-99.99)
     rets = me_m[['Lo 10', 'Hi 10']]
     rets.columns = ['SmallCap', 'LargeCap']
@@ -18,7 +18,7 @@ def get_hfi_returns():
     """
     Load and format the EDHEC Hedge Fund Index Returns
     """
-    hfi = pd.read_csv("data/edhec-hedgefundindices.csv",
+    hfi = pd.read_csv("https://raw.githubusercontent.com/Redzoro1993/Introduction-to-Portfolio-Construction-and-Analysis-with-Python/master/Data/edhec-hedgefundindices.csv",
                       header=0, index_col=0, parse_dates=True)
     hfi = hfi/100
     hfi.index = hfi.index.to_period('M')
@@ -41,7 +41,7 @@ def get_ind_file(filetype):
         name = "size"
         divisor = 1
                          
-    ind = pd.read_csv(f"data/ind30_m_{name}.csv", header=0, index_col=0)/divisor
+    ind = pd.read_csv(f"https://raw.githubusercontent.com/Redzoro1993/Introduction-to-Portfolio-Construction-and-Analysis-with-Python/master/Data/ind30_m_{name}.csv", header=0, index_col=0)/divisor
     ind.index = pd.to_datetime(ind.index, format="%Y%m").to_period('M')
     ind.columns = ind.columns.str.strip()
     return ind
