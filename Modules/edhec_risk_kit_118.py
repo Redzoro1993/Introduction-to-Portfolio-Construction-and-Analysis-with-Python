@@ -41,7 +41,7 @@ def get_ind_file(filetype):
         name = "size"
         divisor = 1
                          
-    ind = pd.read_csv(f"data/ind30_m_{name}.csv", header=0, index_col=0)/divisor
+    ind = pd.read_csv("https://raw.githubusercontent.com/Redzoro1993/Introduction-to-Portfolio-Construction-and-Analysis-with-Python/master/Data/ind30_m_vw_rets.csv"", header=0, index_col=0)/divisor
     ind.index = pd.to_datetime(ind.index, format="%Y%m").to_period('M')
     ind.columns = ind.columns.str.strip()
     return ind
