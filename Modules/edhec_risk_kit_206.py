@@ -5,7 +5,7 @@ def get_ffme_returns():
     """
     Load the Fama-French Dataset for the returns of the Top and Bottom Deciles by MarketCap
     """
-    me_m = pd.read_csv("data/Portfolios_Formed_on_ME_monthly_EW.csv",
+    me_m = pd.read_csv("https://raw.githubusercontent.com/Redzoro1993/Introduction-to-Portfolio-Construction-and-Analysis-with-Python/master/Data/Portfolios_Formed_on_ME_monthly_EW.csv",
                        header=0, index_col=0, na_values=-99.99)
     rets = me_m[['Lo 10', 'Hi 10']]
     rets.columns = ['SmallCap', 'LargeCap']
@@ -17,7 +17,7 @@ def get_fff_returns():
     """
     Load the Fama-French Research Factor Monthly Dataset
     """
-    rets = pd.read_csv("data/F-F_Research_Data_Factors_m.csv",
+    rets = pd.read_csv("https://raw.githubusercontent.com/Redzoro1993/Introduction-to-Portfolio-Construction-and-Analysis-with-Python/master/Data/F-F_Research_Data_Factors_m.csv",
                        header=0, index_col=0, na_values=-99.99)/100
     rets.index = pd.to_datetime(rets.index, format="%Y%m").to_period('M')
     return rets
@@ -27,7 +27,7 @@ def get_hfi_returns():
     """
     Load and format the EDHEC Hedge Fund Index Returns
     """
-    hfi = pd.read_csv("data/edhec-hedgefundindices.csv",
+    hfi = pd.read_csv("https://raw.githubusercontent.com/Redzoro1993/Introduction-to-Portfolio-Construction-and-Analysis-with-Python/master/Data/edhec-hedgefundindices.csv",
                       header=0, index_col=0, parse_dates=True)
     hfi = hfi/100
     hfi.index = hfi.index.to_period('M')
@@ -240,7 +240,7 @@ from scipy.stats import norm
 def var_gaussian(r, level=5, modified=False):
     """
     Returns the Parametric Gauusian VaR of a Series or DataFrame
-    If "modified" is True, then the modified VaR is returned,
+    If "modified" is True, then the modified VaR i0s returned,
     using the Cornish-Fisher modification
     """
     # compute the Z score assuming it was Gaussian
